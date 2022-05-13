@@ -31,22 +31,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-
-    _getGifs().then((map) {
-      print(map);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
+        centerTitle: true,
         title: Image.network(
             "https://developers.giphy.com/branch/master/static/header-logo-0fec0225d189bc0eae27dac3e3770582.gif"),
-        centerTitle: true,
       ),
       backgroundColor: Colors.black,
       body: Column(
@@ -63,7 +54,11 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
               onSubmitted: (text) {
                 setState(() {
-                  _search = text;
+                  if(text == "") {
+                    _search = null;
+                  } else {
+                    _search = text;
+                  }
                   _offset = 0;
                 });
               },
