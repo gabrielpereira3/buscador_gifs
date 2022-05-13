@@ -36,8 +36,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Image.network(
-            "https://developers.giphy.com/branch/master/static/header-logo-0fec0225d189bc0eae27dac3e3770582.gif"),
+        title: TextButton(
+          child: Image.network(
+              "https://developers.giphy.com/branch/master/static/header-logo-0fec0225d189bc0eae27dac3e3770582.gif"),
+          onPressed: (){
+            _search = null;
+            _offset = 0;
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
+        ),
       ),
       backgroundColor: Colors.black,
       body: Column(
